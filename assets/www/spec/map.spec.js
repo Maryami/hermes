@@ -361,7 +361,7 @@ describe('MapRouter', function () {
     });
 
     it('should have the correct amount of routes', function () {
-      expect(_.size(this.router.routes)).toEqual(3);
+      expect(_.size(this.router.routes)).toEqual(4);
     });
 
     it('*actions route exists & points to default route', function () {
@@ -370,6 +370,7 @@ describe('MapRouter', function () {
 
     it('static routes exists & points to the correct right function', function () {
       expect(this.router.routes['auditoriums']).toEqual('auditoriums');
+      expect(this.router.routes['computerLabs']).toEqual('computerLabs');
     });
   });
 
@@ -378,7 +379,7 @@ describe('MapRouter', function () {
       Backbone.history.options = {};
     });
 
-    it("should call dafaultRoute for empty url", function () {
+    it("should call defaultRoute for empty url", function () {
       spyOn(MapRouter.prototype, "defaultRoute");
       new MapRouter();
 
@@ -404,6 +405,15 @@ describe('MapRouter', function () {
 
       expect(MapRouter.prototype.buildings).toHaveBeenCalled();
     });
+
+    it("should call computerLabs for /computerLabs", function () {
+      spyOn(MapRouter.prototype, "computerLabs");
+      new MapRouter();
+
+      Backbone.history.loadUrl("computerLabs");
+
+      expect(MapRouter.prototype.computerLabs).toHaveBeenCalled();
+    });
   });
 
   describe('when choosing defaultRoute', function () {
@@ -419,6 +429,50 @@ describe('MapRouter', function () {
 
       expect(AppView.prototype.initialize).toHaveBeenCalled();
       expect(AppView.prototype.render).toHaveBeenCalled();
+    });
+  });
+
+  describe('when choosing computer labs', function () {
+    beforeEach(function () {
+      this.router = new MapRouter();
+
+      spyOn(AppView.prototype, "initialize");
+      spyOn(AppView.prototype, "render");
+      spyOn(AppView.prototype, "updateLocations");
+    });
+
+    it("should initialize an AppView", function () {
+      this.router.computerLabs();
+
+      expect(AppView.prototype.initialize).toHaveBeenCalled();
+    });
+
+    it("should render an AppView", function () {
+      this.router.computerLabs();
+
+      expect(AppView.prototype.render).toHaveBeenCalled();
+    });
+
+    it("should update locations", function () {
+      this.router.computerLabs();
+
+      expect(AppView.prototype.updateLocations).toHaveBeenCalled();
+    });
+
+    it("should initialize an AppView with types 'computerLabs'", function () {
+      AppView.prototype.initialize.andCallFake(function (options) {
+        expect(options.model.get('types')).toEqual(["computerLabs"]);
+      });
+
+      this.router.computerLabs();
+    });
+
+    it("should initialize an AppView with correct title", function () {
+      AppView.prototype.initialize.andCallFake(function (options) {
+        expect(options.title).toEqual("Datorsalar");
+      });
+
+      this.router.computerLabs();
     });
   });
 
