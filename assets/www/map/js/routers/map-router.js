@@ -1,6 +1,6 @@
 var MapRouter = Backbone.Router.extend({
   routes: {
-    "computerLabs" : "computerLabs",
+    "computerLabs": "computerLabs",
     "auditoriums": "auditoriums",
     "buildings": "buildings",
     "*actions": "defaultRoute"
