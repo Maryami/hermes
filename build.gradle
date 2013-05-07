@@ -24,12 +24,13 @@ import org.apache.tools.ant.filters.*
 version = "0.0.4"
 group = "se.su.it.handheld.app"
 archivesBaseName = "hermes"
-description = """Prototype of Stockholm University mobile app."""
+description = """Stockholm University mobile app (alfa)."""
 
 def archiveFile = 'su.tar.gz'
 def phonegapAppId = '219084'
 def phonegapUser = 'utveckling@it.su.se'
 def phonegapPassword = System.getenv('PG_PASS')
+def phonegapKey = System.getenv('PG_KEY')
 
 def phantomjs = {
   String phantomjsBin = System.getenv('PHANTOMJS')
@@ -224,8 +225,8 @@ task toPhonegap(dependsOn: [buildTar, copySplash]) {
     // Multipart request - one part containing info to unlock keys, one part containing app file
     MultipartEntity mp = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
     StringBody stringBody = new StringBody("""{"keys":
-      {"android":{"id":10672, "key_pw": "2u4ppH3rm32", "keystore_pw": "2u4ppH3rm32"},
-      "ios":{"id":46818, "password": "2u4ppH3rm32"}
+      {"android":{"id":19289, "key_pw": "$phonegapKey", "keystore_pw": "$phonegapKey"},
+      "ios":{"id":68333, "password": "$phonegapKey"}
       }
     }""",
             "application/json", Charset.forName("utf-8"))

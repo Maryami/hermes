@@ -73,6 +73,10 @@
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
 
+    background: -webkit-linear-gradient(45deg, #364E6F 0%, #638DCA 100%) repeat scroll 0 0 transparent;
+    background: -moz-linear-gradient(45deg, #364E6F 0%, #638DCA 100%) repeat scroll 0 0 transparent;
+    background: -o-linear-gradient(45deg, #364E6F 0%, #638DCA 100%) repeat scroll 0 0 transparent;
+    background: -ms-linear-gradient(45deg, #364E6F 0%, #638DCA 100%) repeat scroll 0 0 transparent;
     background: linear-gradient(45deg, #364E6F 0%, #638DCA 100%) repeat scroll 0 0 transparent;
 
     -webkit-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.3);
