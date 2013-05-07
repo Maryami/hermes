@@ -36,7 +36,6 @@
     padding: 6px 7px 0.5em 2px;
 }
 
-.backbutton,
 .ui-header .ui-btn-left.backbutton {
 
     -moz-border-radius-topleft: 0.3em;
@@ -52,7 +51,7 @@
     -webkit-border-bottom-left-radius: 0.2em;
     border-bottom-left-radius: 0.2em;
 
-    margin-left: 15px;
+    margin-left: 10px;
     height: 32px;
 }
 
@@ -80,7 +79,7 @@
     background: linear-gradient(45deg, #364E6F 0%, #638DCA 100%) repeat scroll 0 0 transparent;
 
     -webkit-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.3);
-    box-shadow: -1px -1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: -1px 0px 0 rgba(255, 255, 255, 0.3);
 
     border: 1px solid #375075;
     border-image: none;
@@ -96,10 +95,10 @@
 
     content: "";
     display: block;
-    height: 22px;
+    height: 23px;
     left: -11px;
     position: absolute;
-    top: 6px;
+    top: 5px;
 
     -webkit-transform: rotate(-45deg) scale(0.86) skew(-9deg, -9deg);
     -moz-transform: rotate(-45deg) scale(0.86) skew(-9deg, -9deg);
